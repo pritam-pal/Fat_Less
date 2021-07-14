@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../src/screens/HomeScreen';
-import DetailScreen from '../src/screens/DetailScreen';
+import ReportScreen from '../src/screens/ReportScreen';
 import { AddScreenStack } from './MyStack';
+import { DetailStack } from './MyStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -49,7 +50,7 @@ export default Tabs = () => {
       
       <Tab.Screen
         name="Home" 
-        component={HomeScreen}
+        component={DetailStack}
         options={{
           tabBarIcon: ({focused}) => (
             <View style={{ alignItems: 'center', justifyContent: 'center',}}>
@@ -95,7 +96,7 @@ export default Tabs = () => {
 
       <Tab.Screen 
         name="Detail" 
-        component={DetailScreen} 
+        component={ReportScreen} 
         options={{
           tabBarIcon: ({focused}) => (
             <View style={{ alignItems: 'center', justifyContent: 'center',}}>

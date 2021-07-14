@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { View, Text, Button, Image, ScrollView, StyleSheet } from 'react-native';
 import SquareAddCard from '../components/SquareAddCard';
+
 export default DetailsScreen = ({ route, navigation }) => {
+
+  
   return (
     <View style={styles.container}>
       <View>

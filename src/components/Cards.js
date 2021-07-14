@@ -3,77 +3,72 @@ import { View,Text,TouchableOpacity, StyleSheet } from 'react-native';
 
 
 export const BreakfastCards = (props) => {
-
-  // let cal = 0;
-  // for (let i = 0; i < props.cal.length; i++) {
-  //   cal = cal + props.cal;
-  // }
-  // console.log(cal + ' from cards components')
+  
   return (
-    <View style={ styles.breakfastColor}>
-
-      <View>
-        <Text style={styles.title}>Breakfast</Text>
+    <TouchableOpacity onPress={() => props.navigation.navigate('DetailScreen', {name: props.nameArr, cal: props.calArr, pro: props.proArr, fat: props.fatArr, carbo: props.carboArr})}>
+      <View style={ styles.breakfastColor}>
+        <View>
+          <Text style={styles.title}>Breakfast</Text>
+        </View>
+        <View>
+          <Text style={styles.subTitle}>Calories: {props.calBF} cal</Text>
+          <Text style={styles.subTitle}>Fat: {props.fatBF} g</Text>
+          <Text style={styles.subTitle}>Protein: {props.proBF} g</Text>
+          <Text style={styles.subTitle}>Carbohydrates: {props.carboBF} g</Text>
+        </View>
       </View>
-      <View>
-        <Text style={styles.subTitle}>Calories: {props.calBF} cal</Text>
-        <Text style={styles.subTitle}>Fat: {props.fatBF} g</Text>
-        <Text style={styles.subTitle}>Protein: {props.proBF} g</Text>
-        <Text style={styles.subTitle}>Carbohydrates: {props.carboBF} g</Text>
-      </View>
-
-    </View>
+    </TouchableOpacity>
   );
 }
 export const LunchCards = (props) => {
   return (
-    <View style={styles.lunchColor}>
-
-      <View>
-        <Text style={styles.title}>Lunch</Text>
+    <TouchableOpacity onPress={() => props.navigation.navigate('DetailScreen', {name: props.nameArr, cal: props.calArr, pro: props.proArr, fat: props.fatArr, carbo: props.carboArr})}>
+      <View style={styles.lunchColor}>
+        <View>
+          <Text style={styles.title}>Lunch</Text>
+        </View>
+        <View>
+          <Text style={styles.subTitle}>Calories: {props.calLU} cal</Text>
+          <Text style={styles.subTitle}>Fat: {props.fatLU} g</Text>
+          <Text style={styles.subTitle}>Protein: {props.proLU} g</Text>
+          <Text style={styles.subTitle}>Carbohydrates: {props.carboLU} g</Text>
+        </View>
       </View>
-      <View>
-        <Text style={styles.subTitle}>Calories: {props.calLU} cal</Text>
-        <Text style={styles.subTitle}>Fat: {props.fatLU} g</Text>
-        <Text style={styles.subTitle}>Protein: {props.proLU} g</Text>
-        <Text style={styles.subTitle}>Carbohydrates: {props.carboLU} g</Text>
-      </View>
-
-    </View>
+    </TouchableOpacity>
   );
 }
 export const SnacksCards = (props) => {
   return (
-    <View style={styles.snacksColor}>
-
-      <View>
-        <Text style={styles.title}>Snacks</Text>
+    <TouchableOpacity onPress={() => props.navigation.navigate('DetailScreen', {name: props.nameArr, cal: props.calArr, pro: props.proArr, fat: props.fatArr, carbo: props.carboArr})}>
+      <View style={styles.snacksColor}>
+        <View>
+          <Text style={styles.title}>Snacks</Text>
+        </View>
+        <View>
+          <Text style={styles.subTitle}>Calories: {props.calSN} cal</Text>
+          <Text style={styles.subTitle}>Fat: {props.fatSN} g</Text>
+          <Text style={styles.subTitle}>Protein: {props.proSN} g</Text>
+          <Text style={styles.subTitle}>Carbohydrates: {props.carboSN} g</Text>
+        </View>
       </View>
-      <View>
-        <Text style={styles.subTitle}>Calories: {props.calSN} cal</Text>
-        <Text style={styles.subTitle}>Fat: {props.fatSN} g</Text>
-        <Text style={styles.subTitle}>Protein: {props.proSN} g</Text>
-        <Text style={styles.subTitle}>Carbohydrates: {props.carboSN} g</Text>
-      </View>
-
-    </View>
+    </TouchableOpacity>
   );
 }
 export const DinnerCards = (props) => {
   return (
-    <View style={styles.dinnerColor}>
-
-      <View>
-        <Text style={styles.title}>Dinner</Text>
+    <TouchableOpacity onPress={() => props.navigation.navigate('DetailScreen', {name: props.nameArr, cal: props.calArr, pro: props.proArr, fat: props.fatArr, carbo: props.carboArr})}>
+      <View style={styles.dinnerColor}>
+        <View>
+          <Text style={styles.title}>Dinner</Text>
+        </View>
+        <View>
+          <Text style={styles.subTitle}>Calories: {props.calDI} cal</Text>
+          <Text style={styles.subTitle}>Fat: {props.fatDI} g</Text>
+          <Text style={styles.subTitle}>Protein: {props.proDI} g</Text>
+          <Text style={styles.subTitle}>Carbohydrates: {props.carboDI} g</Text>
+        </View>
       </View>
-      <View>
-        <Text style={styles.subTitle}>Calories: {props.calDI} cal</Text>
-        <Text style={styles.subTitle}>Fat: {props.fatDI} g</Text>
-        <Text style={styles.subTitle}>Protein: {props.proDI} g</Text>
-        <Text style={styles.subTitle}>Carbohydrates: {props.carboDI} g</Text>
-      </View>
-
-    </View>
+    </TouchableOpacity>
   );
 }
 

@@ -1,15 +1,12 @@
-import  React, { useState, useEffect } from 'react';
-import { View, ScrollView, Text, Image, StyleSheet } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Custom Components
 import {BreakfastCards, LunchCards, SnacksCards, DinnerCards} from '../components/Cards';
 
+export default DetailsScreen = ({ navigation, route }) => {
 
-// Allocating initial data for rendering
-
-export default HomeScreen = ({ route, navigation }) => {
-  // let reload = 0;
   let resultCal = 0;
   let resultPro = 0;
   let resultFat = 0;
@@ -39,6 +36,7 @@ export default HomeScreen = ({ route, navigation }) => {
   let dinnerFat = [];
   let dinnerCarbo = [];
 
+  
   let [bfName, setBfName] = useState([]);
   let [bfCal, setBfCal] = useState([]);
   let [bfPro, setBfPro] = useState([]);
@@ -62,6 +60,7 @@ export default HomeScreen = ({ route, navigation }) => {
   let [diPro, setDiPro] = useState([]);
   let [diFat, setDiFat] = useState([]);
   let [diCarbo, setDiCarbo] = useState([]);
+
 
   let [reload, setReload] = useState(false);
   let [addCalBF, setAddCalBF] = useState(resultCal);
@@ -271,49 +270,14 @@ export default HomeScreen = ({ route, navigation }) => {
     })()
     
   }, [reload])
-  // console.log(breakfastName)
+  
   return (
-      
-      <View style={styles.container}>
-        
-        <ScrollView>
-          <View>
-            <Image
-              source={require('../../assets/img/home-hero.jpg')}
-              style={{
-                height: 200,
-                width: 345,
-                borderRadius: 15,
-                marginTop: 50,
-                marginBottom: 100,
-                position: 'relative',
-              }}
-              
-            />
-            <Text style={{
-                position: 'absolute',
-                top: 10,
-                left: 1,
-                fontSize: 30,
-                fontWeight: '300',
-                color: '#FF1E56'
-            }}>
-              Fat-less
-            </Text>
-            <Text style={{
-                position: 'absolute',
-                top: 240,
-                left: 20,
-                fontSize: 40,
-                fontWeight: '300',
-                lineHeight: 50,
-                color: '#00ff00'
-            }}>
-              Eat food, stay Healthy
-            </Text>
-          </View>
-
-
+    <View style={styles.container}>
+        <View>
+          <Text>Report Screen</Text>
+        </View>
+        <ScrollView >
+            
           <BreakfastCards 
             route={route} 
             navigation={navigation} 
@@ -367,8 +331,7 @@ export default HomeScreen = ({ route, navigation }) => {
             carboArr={diCarbo}
           />
         </ScrollView>
-      </View>
-    
+    </View>
   );
 }
 
@@ -376,12 +339,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    // maxHeight: '100%',
-    backgroundColor: '#fff',
-    paddingTop: 30,
+    justifyContent: 'center',
+    paddingTop: 50,
     paddingBottom: 120,
-  },
-});
-
-
-// #FF1E56
+    height: '100%',
+  }
+})

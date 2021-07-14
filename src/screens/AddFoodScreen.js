@@ -5,34 +5,24 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const KEY ='vcnEwkhp9PtSE/ViKeD9Og==iSfwc9vV8YjWbrbD';
 
-const date = new Date();
-
-const weekDay = date.getDay()
-const today = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
-// console.log(today)
-// console.log(weekDay)
-
 export default ({ route }) => {
 
   const { keys } = route.params;
-  // console.log(keys)
+
   const [term, setTerm] = useState('');
   const [query, setQuery] = useState(term);
-  const [response, setResponse ] = useState({});
-  const [timeStamp, setTimeStamp] = useState([]);
-
-  const [resultBF, setResultBF] = useState({});
+  const [response, setResponse] = useState({});
 
   useEffect(() => {
     const timerID = setTimeout(() => {
       setQuery(term)
     }, 2000);
-    
+
     return () =>{ clearTimeout(timerID) };
   }, [term])
-  
+
   useEffect(() => {
-    
+
     const search = async () => {
       if( query != '' ) {
         try {
@@ -65,9 +55,6 @@ export default ({ route }) => {
         // read key error
       }
 
-      console.log(keys)
-      // example console.log result:
-      // ['@MyApp_user', '@MyApp_key']
     }
     
     const removeValue = async (keyDel) => {
@@ -122,7 +109,6 @@ export default ({ route }) => {
       }
 
       // read data
-      // const default_data = JSON.stringify({data: []});
 
       const getDataBF = async () => {
         try {
@@ -179,30 +165,6 @@ export default ({ route }) => {
           setTerm('');
           setResponse({});
 
-          // console.log(readData('breakfast'))
-          // Saving timestamp data for index
-          // const { dataTS } = read('breakfastIndex');
-          // const breakfastTS = {dataTS: [...dataTS, newTimeStamp]};
-          // saveTimeStamp('breakfastIndex', breakfastTS);
-
-          // Saving breakfast data
-          // const { dataBF } = read('breakfast');
-          // const breakfast = { dataBF: [...dataBF, response]};
-          // const breakfast = response
-          // saveBreakfast('breakfast', breakfast)
-          // console.log(read('breakfast'))
-          // let getIndexB = MMKV.getString('breakfastIndex');
-          // getIndexB = JSON.parse(getIndexB);
-          // const oldTimeStampB = getIndexB.index;
-          // const indexB = {index: [...oldTimeStampB, timeStamp]};
-          // MMKV.set('breakfastIndex', indexB);
-
-          // const getDataB = MMKV.getString('breakfast');
-          // const breakfastCopy = JSON.parse(getDataB);
-          // const breakfast = {timeStamp: [[breakfastCopy, response], weekDay, today]};
-          // setResponse({});
-          // MMKV.set('breakfast', JSON.stringify(breakfast));
-          console.log('b clicked');
           break;
 
         case 'lunch':
@@ -216,23 +178,7 @@ export default ({ route }) => {
           alert('Data saved 😘');
           setTerm('');
           setResponse({});
-          
-        // Saving lunch data
-        // const { dataLU } = read('lunch');
-        // const lunch = { dataLU: [...dataLU, response]};
-        // saveLunch('lunch', lunch)
-          // let getIndexL = MMKV.getString('lunchIndex');
-          // getIndexL = JSON.parse(getIndexL);
-          // const oldTimeStampL = getIndexL.index;
-          // const indexL = {index: [...oldTimeStampL, timeStamp]};
-          // MMKV.set('lunchIndex', indexL);
-
-          // const getDataL = MMKV.getString('lunch');
-          // const lunchCopy = JSON.parse(getDataL);
-          // const lunch = {timeStamp: [[lunchCopy, response], weekDay, today]};
-          // setResponse({});
-          // MMKV.set('lunch', JSON.stringify(lunch));
-          // console.log('l clicked');
+       
           break;
 
         case 'snacks':
@@ -246,22 +192,7 @@ export default ({ route }) => {
           alert('Data saved 😘');
           setTerm('');
           setResponse({});
-          // Saving breakfast data
-          // const { dataSN } = read('snacks');
-          // const snacks = { dataSN: [...dataSN, response]};
-          // saveSnacks('snacks', snacks)
-          // let getIndexS = MMKV.getString('snacksIndex');
-          // getIndexS = JSON.parse(getIndexS);
-          // const oldTimeStampS = getIndexS.index;
-          // const indexS = {index: [...oldTimeStampS, timeStamp]};
-          // MMKV.set('snacksIndex', indexS)
-
-          // const getDataS = MMKV.getString('snacks');
-          // const snacksCopy = JSON.parse(getDataS);
-          // const snacks = {timeStamp: [[snacksCopy, response], weekDay, today]};
-          // setResponse({});
-          // MMKV.set('snacks', JSON.stringify(snacks));
-          // console.log('s clicked');
+          
           break;
 
         case 'dinner':
@@ -276,24 +207,6 @@ export default ({ route }) => {
           setTerm('');
           setResponse({});
 
-
-
-          // Saving breakfast data
-          // const { dataDR } = read('dinner');
-          // const dinner = { dataDR: [...dataDR, response]};
-          // saveDinner('dinner', dinner)
-          // let getIndexD = MMKV.getString('dinnerIndex');
-          // getIndexD = JSON.parse(getIndexD);
-          // const oldTimeStampD = getIndexD.index;
-          // const indexD = {index: [...oldTimeStampD, timeStamp]};
-          // MMKV.set('dinnerIndex', indexD);
-
-          // const getDataD = MMKV.getString('dinner');
-          // const dinnerCopy = JSON.parse(getDataD);
-          // const dinner = {timeStamp: [[dinnerCopy, response], weekDay, today]};
-          // setResponse({});
-          // MMKV.set('dinner', JSON.stringify(dinner));
-          // console.log('d clicked');
           break;
 
         default:
