@@ -1,55 +1,40 @@
-import React from 'react';
-import { StyleSheet, View, ScrollView, Text, Image, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react';
+import { StyleSheet, View, ScrollView, Text, Image  } from 'react-native'
 
 export default ({route}) => {
-  const { name, cal, pro, fat, carbo } = route.params;
+  const { total } = route.params;
+  
 
-  console.log(name)
-  console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  let count = 0;
-  const renderName = name.map(name => {
-    count ++;
-    return(
-      <Text key={count}>Name: {name}</Text>
+  const render = total.map(item => {
+    if(item.name === '') return null;
+    return (
+      <View>
+        <Text style={styles.title} key={Math.random()}>{item.name}</Text>
+        <View style={styles.contentBox}>
+          <Text style={styles.content} key={Math.random()}>Calories: {item.calories} kcal</Text>
+          <Text style={styles.content} key={Math.random()}>Protein: {item.protein_g} g</Text>
+          <Text style={styles.content} key={Math.random()}>Fat: {item.fat_total_g} g</Text>
+          <Text style={styles.content} key={Math.random()}>Carbohydrates: {item.carbohydrates_total_g} g</Text>
+        </View>
+      </View>
     )
   })
-
-  const renderCal = cal.map(cal => {
-    count ++;
-    return(
-      <Text key={count}>Calories: {cal} cal</Text>
-    )
-  });
-  const renderPro = pro.map(pro => {
-    count ++;
-    return(
-      <Text key={count}>Protein: {pro} g</Text>
-    )
-  });
-  const renderFat = fat.map(fat => {
-    count ++;
-    return(
-      <Text key={count}>Fat: {fat} g</Text>
-    )
-  });
-  const renderCarbo = carbo.map(carbo => {
-    count ++;
-    return(
-      <Text key={count}>Carbo: {carbo} g</Text>
-    )
-  });
   
   return(
     <View style={styles.container}>
-      <Text>Detail screen</Text>
       <View>
+        <Image
+          source={require('../../assets/icons/basket.png')}
+          resizeMode='contain'
+          style={{
+            width: 300,
+            height: 200,
+            marginBottom: 20,
+          }}
+        />
         <ScrollView>
           <View>
-            {renderName}
-            {renderCal}
-            {renderPro}
-            {renderFat}
-            {renderCarbo}
+            {render}
           </View>
         </ScrollView>
       </View>
@@ -62,7 +47,37 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: 120,
-    paddingTop: 50,
+    paddingBottom: 150,
+    paddingTop: 70,
+  },
+  title: {
+    fontSize: 25,
+    color: '#00ff00',
+    paddingVertical: 10,
+    width: 300,
+    borderRadius: 15,
+    borderColor: '#00ff00',
+    borderWidth: 2,
+    backgroundColor: '#fff',
+    textAlign: 'center',
+    textTransform: 'capitalize',
+    letterSpacing: 4,
+  },
+  contentBox: {
+    paddingVertical: 15,
+    paddingTop: 30,
+    marginTop: -20,
+    marginBottom: 10,
+    borderRadius: 15,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+    borderColor: '#00ff00',
+    borderWidth: 1,
+    borderTopWidth: 0,
+  },
+  content: {
+    fontSize: 18,
+    color: '#333',
+    paddingLeft: 20,
   }
 })

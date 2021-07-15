@@ -9,59 +9,16 @@ import {BreakfastCards, LunchCards, SnacksCards, DinnerCards} from '../component
 // Allocating initial data for rendering
 
 export default HomeScreen = ({ route, navigation }) => {
-  // let reload = 0;
+
   let resultCal = 0;
   let resultPro = 0;
   let resultFat = 0;
   let resultCarbo = 0;
 
-  let breakfastName = [];
-  let breakfastCal = [];
-  let breakfastPro = [];
-  let breakfastFat = [];
-  let breakfastCarbo = [];
-
-  let lunchName = [];
-  let lunchCal = [];
-  let lunchPro = [];
-  let lunchFat = [];
-  let lunchCarbo = [];
-
-  let snacksName = [];
-  let snacksCal = [];
-  let snacksPro = [];
-  let snacksFat = [];
-  let snacksCarbo = [];
-
-  let dinnerName = [];
-  let dinnerCal = [];
-  let dinnerPro = [];
-  let dinnerFat = [];
-  let dinnerCarbo = [];
-
-  let [bfName, setBfName] = useState([]);
-  let [bfCal, setBfCal] = useState([]);
-  let [bfPro, setBfPro] = useState([]);
-  let [bfFat, setBfFat] = useState([]);
-  let [bfCarbo, setBfCarbo] = useState([]);
-
-  let [luName, setLuName] = useState([]);
-  let [luCal, setLuCal] = useState([]);
-  let [luPro, setLuPro] = useState([]);
-  let [luFat, setLuFat] = useState([]);
-  let [luCarbo, setLuCarbo] = useState([]);
-
-  let [snName, setSnName] = useState([]);
-  let [snCal, setSnCal] = useState([]);
-  let [snPro, setSnPro] = useState([]);
-  let [snFat, setSnFat] = useState([]);
-  let [snCarbo, setSnCarbo] = useState([]);
-
-  let [diName, setDiName] = useState([]);
-  let [diCal, setDiCal] = useState([]);
-  let [diPro, setDiPro] = useState([]);
-  let [diFat, setDiFat] = useState([]);
-  let [diCarbo, setDiCarbo] = useState([]);
+  const [breakfast, setBreakfast] = useState({});
+  const [lunch, setLunch] = useState({});
+  const [snacks, setSnacks] = useState({});
+  const [dinner, setDinner] = useState({});
 
   let [reload, setReload] = useState(false);
   let [addCalBF, setAddCalBF] = useState(resultCal);
@@ -130,29 +87,24 @@ export default HomeScreen = ({ route, navigation }) => {
       const {data_sn} = dataSN;
       const {data_di} = dataDI;
       
+      setBreakfast(data_bf);
+      setLunch(data_lu)
+      setSnacks(data_sn)
+      setDinner(data_di)
+
       for await (let item of data_bf) {
-        breakfastName.push(item.name);
         let cal = item.calories;
-        breakfastCal.push(cal);
         resultCal += cal;
   
         let pro = item.protein_g;
-        breakfastPro.push(pro);
         resultPro += pro;
         
         let fat = item.fat_total_g;
-        breakfastFat.push(fat);
         resultFat += fat;
   
         let carbo = item.carbohydrates_total_g;
-        breakfastCarbo.push(carbo);
         resultCarbo += carbo;
       }
-      setBfName(breakfastName);
-      setBfCal(breakfastCal);
-      setBfPro(breakfastPro);
-      setBfFat(breakfastFat);
-      setBfCarbo(breakfastCarbo);
 
       setAddCalBF(resultCal);
       setAddProBF(resultPro)
@@ -164,28 +116,18 @@ export default HomeScreen = ({ route, navigation }) => {
       resultCarbo=0;
   
       for await (let item of data_lu) {
-        lunchName.push(item.name);
         let cal = item.calories;
-        lunchCal.push(cal);
         resultCal += cal;
   
         let pro = item.protein_g;
-        lunchPro.push(pro);
         resultPro += pro;
         
         let fat = item.fat_total_g;
-        lunchFat.push(fat);
         resultFat += fat;
   
         let carbo = item.carbohydrates_total_g;
-        lunchCarbo.push(carbo);
         resultCarbo += carbo;
       }
-      setLuName(lunchName);
-      setLuCal(lunchCal);
-      setLuPro(lunchPro);
-      setLuFat(lunchFat);
-      setLuCarbo(lunchCarbo);
 
       setAddCalLU(resultCal);
       setAddProLU(resultPro);
@@ -197,28 +139,18 @@ export default HomeScreen = ({ route, navigation }) => {
       resultCarbo=0;
   
       for await (let item of data_sn) {
-        snacksName.push(item.name);
         let cal = item.calories;
-        snacksCal.push(cal);
         resultCal += cal;
   
         let pro = item.protein_g;
-        snacksPro.push(pro);
         resultPro += pro;
         
         let fat = item.fat_total_g;
-        snacksFat.push(fat);
         resultFat += fat;
   
         let carbo = item.carbohydrates_total_g;
-        snacksCarbo.push(carbo);
         resultCarbo += carbo;
       }
-      setSnName(snacksName);
-      setSnCal(snacksCal);
-      setSnPro(snacksPro);
-      setSnFat(snacksFat);
-      setSnCarbo(snacksCarbo);
 
       setAddCalSN(resultCal);
       setAddProSN(resultPro);
@@ -230,28 +162,18 @@ export default HomeScreen = ({ route, navigation }) => {
       resultCarbo=0;
   
       for await (let item of data_di) {
-        dinnerName.push(item.name);
         let cal = item.calories;
-        dinnerCal.push(cal);
         resultCal += cal;
   
         let pro = item.protein_g;
-        dinnerPro.push(pro);
         resultPro += pro;
         
         let fat = item.fat_total_g;
-        dinnerFat.push(fat);
         resultFat += fat;
   
         let carbo = item.carbohydrates_total_g;
-        dinnerCarbo.push(carbo);
         resultCarbo += carbo;
       }
-      setDiName(dinnerName);
-      setDiCal(dinnerCal);
-      setDiPro(dinnerPro);
-      setDiFat(dinnerFat);
-      setDiCarbo(dinnerCarbo);
 
       setAddCalDI(resultCal);
       setAddProDI(resultPro);
@@ -271,7 +193,7 @@ export default HomeScreen = ({ route, navigation }) => {
     })()
     
   }, [reload])
-  // console.log(breakfastName)
+
   return (
       
       <View style={styles.container}>
@@ -285,7 +207,7 @@ export default HomeScreen = ({ route, navigation }) => {
                 width: 345,
                 borderRadius: 15,
                 marginTop: 50,
-                marginBottom: 100,
+                marginBottom: 40,
                 position: 'relative',
               }}
               
@@ -300,7 +222,7 @@ export default HomeScreen = ({ route, navigation }) => {
             }}>
               Fat-less
             </Text>
-            <Text style={{
+            {/* <Text style={{
                 position: 'absolute',
                 top: 240,
                 left: 20,
@@ -310,10 +232,41 @@ export default HomeScreen = ({ route, navigation }) => {
                 color: '#00ff00'
             }}>
               Eat food, stay Healthy
-            </Text>
+            </Text> */}
           </View>
 
-
+            <View style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alineItems: 'center',
+              justifyContent: 'center',
+              width: 300,
+              marginLeft: 20,
+              marginBottom: 30,
+              borderRadius: 50,
+              borderWidth: 1,
+              borderColor: '#00ff00',
+              paddingHorizontal: 10,
+              paddingVertical: 25,
+            }}>
+              <Text style={{
+                fontSize: 15,
+                letterSpacing: 2,
+                textAlign: 'center',
+              }}>
+                Total Calories:  {Math.floor( addCalBF + addCalLU + addCalSN + addCalDI )}
+              </Text>
+              <Image 
+                source={require('../../assets/icons/kcal.png')}
+                resizeMode='contain'
+                style={{
+                  width: 25,
+                  height: 25,
+                  marginLeft: 10,
+                }}
+              />
+            </View>
+    
           <BreakfastCards 
             route={route} 
             navigation={navigation} 
@@ -321,11 +274,7 @@ export default HomeScreen = ({ route, navigation }) => {
             proBF={Math.round(addProBF)} 
             fatBF={Math.round(addFatBF)} 
             carboBF={Math.round(addCarboBF)}
-            nameArr={bfName}
-            calArr={bfCal}
-            proArr={bfPro}
-            fatArr={bfFat}
-            carboArr={bfCarbo}
+            totalObj={breakfast}
           /> 
           <LunchCards 
             route={route} 
@@ -334,11 +283,7 @@ export default HomeScreen = ({ route, navigation }) => {
             proLU={Math.round(addProLU)} 
             fatLU={Math.round(addFatLU)} 
             carboLU={Math.round(addCarboLU)}
-            nameArr={luName}
-            calArr={luCal}
-            proArr={luPro}
-            fatArr={luFat}
-            carboArr={luCarbo}
+            totalObj={lunch}
           />
           <SnacksCards 
             route={route}
@@ -347,11 +292,7 @@ export default HomeScreen = ({ route, navigation }) => {
             proSN={Math.round(addProSN)} 
             fatSN={Math.round(addFatSN)} 
             carboSN={Math.round(addCarboSN)}
-            nameArr={snName}
-            calArr={snCal}
-            proArr={snPro}
-            fatArr={snFat}
-            carboArr={snCarbo}
+            totalObj={snacks}
           />
           <DinnerCards 
             route={route}
@@ -360,11 +301,7 @@ export default HomeScreen = ({ route, navigation }) => {
             proDI={Math.round(addProDI)}
             fatDI={Math.round(addFatDI)}
             carboDI={Math.round(addCarboDI)}
-            nameArr={diName}
-            calArr={diCal}
-            proArr={diPro}
-            fatArr={diFat}
-            carboArr={diCarbo}
+            totalObj={dinner}
           />
         </ScrollView>
       </View>

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "fat-less",
+    "name": "Fat-less",
     "slug": "fat-less",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.pritam_expo.fatless"
     },
     "web": {
       "favicon": "./assets/favicon.png"
